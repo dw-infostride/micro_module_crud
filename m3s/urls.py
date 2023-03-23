@@ -15,7 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from crud import views
+from django.conf.urls.static import static
+from m3s import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', views.start_page, name='start_page' ),
+    path('sign-up/', views.sign_up, name='sign_up' ),
+    path('sign-in/', views.sign_in, name='sign_in'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('logout/', views.log_out, name="logout"),
+    path('edit-profile/', views.edit_profile, name="edit_profile"),
+    path('change-password/', views.change_password, name="change_password"),
+
+
+    
+]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# urlpatterns = [
+# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

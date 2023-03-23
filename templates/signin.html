@@ -1,0 +1,79 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Design by foolishdeveloper.com -->
+  <title>Login Page</title>
+
+  {% comment %}
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> {% endcomment %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+
+<body style="text-align: center">
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% comment %} {%for msg in messages%}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong></strong> {{msg}}
+  </div>
+  {%endfor%} {% endcomment %}
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <form method="POST">
+
+    <h3>Login Here</h3>
+    {% csrf_token %}
+    <div>
+      <label for="email">Email</label>
+      <input type="text" placeholder="Enter E-Mail" id="email" name="email" Required>
+    </div> <br>
+
+
+    <div>
+      <label for="password">Password</label>
+      <input type="password" placeholder=" Enter Password" id="password" name="password" Required>
+    </div>
+    <br>
+
+
+    <div class="mx-auto" style="width: 300px;">
+      <div class="g-recaptcha mx-auto" name="recaptcha" data-sitekey="6LcVnyElAAAAAJGBnqz7xmHFtFkI1kHdYFAbYzSk"></div>
+      <br>
+    </div>
+
+    <button type="submit">Log In</button>
+    <!-- <input type="button" value=""> -->
+    <!-- <div class="social">
+          <div class="go"><i class="fab fa-google"></i>  Google</div>
+          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div> -->
+    <a href="{% url 'sign_up' %}">Create account</a>
+  </form>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+</body>
+
+
+
+</html>
