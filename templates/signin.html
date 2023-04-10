@@ -1,4 +1,7 @@
 {% load static %}
+{% load socialaccount %}
+
+
 
 
 <!DOCTYPE html>
@@ -76,6 +79,8 @@
         <a href="{% url 'forgot_password' %}" class="btn btn-primary">Forgot Password</a>
         {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
       </div>
+      <br>
+      <a class="btn btn-danger" href="{% provider_login_url 'google' %}?next=/">Log in with Google</a>
 
   </form>
 

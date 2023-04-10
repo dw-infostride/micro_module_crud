@@ -30,7 +30,8 @@ urlpatterns = [
     path('change-password/', views.change_password, name="change_password"),
     path('delete-user/', views.delete_user, name="delete_user"),
     path('forgot-password/', views.forgot_password, name="forgot_password"),
-    path('change-password/<token>/', views.reset_password , name = 'change_password')
+    path('change-password/<token>/', views.reset_password , name = 'change_password'),
+    path('accounts/', include('allauth.urls')),
 
     
 

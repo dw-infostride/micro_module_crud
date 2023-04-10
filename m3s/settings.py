@@ -37,8 +37,39 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crud.apps.CrudConfig'
+    'crud.apps.CrudConfig',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+SITE_ID = 1
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+] 
+
+# Provider specific settings
+
+# Provider specific settings
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+            ],
+        },
+    'AUTH_PARAMS': {
+        'access_type' : 'online'
+        },
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,18 +99,9 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'm3s.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -158,3 +180,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'abhishekgoyal2105@gmail.com'
 EMAIL_HOST_PASSWORD = 'wcaoexqgtzdngpke'
+
+LOGIN_REDIRECT_URL = '/' # or any URL you want to redirect the user to after successful login
